@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.data.nameDisplay</h2>
+<br/>
+<table class="table-responsive">
+    <thead>
+        <tr>
+            <th>
+                Fields
+            </th>
+            <th>
+                Details
+            </th>
+        </tr>
+    </thead>
+    <tr>
+        <td width="25%">Name:</td>
+        <td  width="75%"> @Model.data.name</td>
+    </tr>
+  
+    <tr>
+        <td>Description:</td>
+        <td> @Model.data.description</td>
+    </tr>
+    <tr>
+        <td>Abv:</td>
+        <td>
+             @Model.data.abv
+        </td>
+    </tr>
+    <tr>
+        <td>Glassware:</td>
+        <td>
+            @if (Model.data.glass != null)
+            { @Model.data.glass.name;
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>Srm:</td>
+        <td>
+             @if (Model.data.srm != null)
+            {@Model.data.srm.name;
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>Style:</td>
+        <td>
+             @if (Model.data.style != null)
+            { @Model.data.style.name ;
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>Available:</td>
+        <td>
+             @if (Model.data.available != null)
+            { @Model.data.available.name ;
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>Is Organic:</td>
+        <td> @Model.data.isOrganic</td>
+    </tr>
+    <tr>
+        <td>Status:</td>
+        <td> @Model.data.status</td>
+    </tr>
+    <tr>
+        <td>Status Display:</td>
+        <td> @Model.data.statusDisplay</td>
+    </tr>
+    <tr>
+        <td>Created Date:</td>
+        <td> @Model.data.createDate</td>
+    </tr>
+    <tr>
+        <td>Updated Date:</td>
+        <td> @Model.data.updateDate</td>
+    </tr>
+    <tr>
+        <td>Serving Temperature:</td>
+        <td> @Model.data.servingTemperature</td>
+    </tr>
+    <tr>
+        <td>Serving Temperature Display:</td>
+        <td> @Model.data.servingTemperatureDisplay</td>
+    </tr>
+    <tr>
+        <td>Labels:</td>
+        <td>
+             @if (Model.data.labels != null)
+            {@Model.data.labels.icon;
+            }
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            @if (Model.data.labels != null)
+        {@Model.data.labels.medium;
+        }
+    </td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+        @if (Model.data.labels != null)
+    {@Model.data.labels.large;
+    }
+</td>
+</tr>
+</table>

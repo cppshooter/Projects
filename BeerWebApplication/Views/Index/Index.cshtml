@@ -6,7 +6,7 @@
 <h2>Beer List</h2>
 
 <div class="table-responsive">
-    <table id="AeroMedicallist"></table>
+    <table id="BeerList"></table>
     <div id="pager"></div>
 </div>
 
@@ -14,29 +14,35 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        GetAeroMedicalList();
+        GetBeerList();
     });
 
-    function GetAeroMedicalList() {
+    function GetBeerList() {
 
         var obj = new Object();
 
-        $("#AeroMedicallist").jqGrid({
+        $("#BeerList").jqGrid({
             url: '@Url.Action("FetchData", "Index")',
             datatype: "json",
             postData: (obj),
-            colNames: ['name', 'description', 'abv', 'ibu', 'glasswareId', 'srmId', 'availableId', 'styleId', 'isOrganic', 'status', 'createDate', 'updateDate', 'random'],
+            colNames: ['name', 'description', 'abv', 'ibu', 'glass Id', 'glass', 'srm Id', 'srm', 'available Id', 'available', 'style Id', 'style', 'isOrganic', 'status', 'createDate', 'updateDate', 'random', "Details"],
             colModel: [
                 { name: 'name', index: 'name', searchoptions: { sopt: ['eq'] } },
                 { name: 'description', index: 'description', searchoptions: { sopt: ['eq'] } },
                 { name: 'abv', index: 'abv', searchoptions: { sopt: ['eq'] } },
 
                       { name: 'ibu', index: 'ibu', searchoptions: { sopt: ['eq'] } },
-                { name: 'glasswareId', index: 'glasswareId', searchoptions: { sopt: ['eq'] } },
-                { name: 'srmId', index: 'srmId', searchoptions: { sopt: ['eq'] } },
 
-                   { name: 'availableId', index: 'availableId', searchoptions: { sopt: ['eq'] } },
+                { name: 'glasswareId', index: 'glasswareId', searchoptions: { sopt: ['eq'] } },
+                { name: 'glass.name', search: false, index: 'glasswareId', searchoptions: { sopt: ['eq'] } },
+
+                { name: 'srmId', index: 'srmId', searchoptions: { sopt: ['eq'] } },
+                { name: 'srm.name',search:false, index: 'srmId', searchoptions: { sopt: ['eq'] } },
+                { name: 'availableId', index: 'availableId', searchoptions: { sopt: ['eq'] } },
+                   { name: 'available.name', search: false, index: 'availableId', searchoptions: { sopt: ['eq'] } },
+
                 { name: 'styleId', index: 'styleId', searchoptions: { sopt: ['eq'] } },
+                { name: 'style.name', search: false, index: 'styleId', searchoptions: { sopt: ['eq'] } },
                 {
                     name: 'isOrganic', index: 'isOrganic', 
                     searchoptions: { sopt: ['eq'] }
@@ -46,6 +52,7 @@
                 { name: 'createDate', index: 'createDate', searchoptions: { sopt: ['eq'] } },
                 { name: 'updateDate', index: 'updateDate', searchoptions: { sopt: ['eq'] } },
                 { name: 'random', index: 'random', searchoptions: { sopt: ['eq'] } },
+                { name: 'View', index: 'View', width: 80, align: 'center', sortable: false, formatter: FormatDetail },
             ],      
             autowidth: true,
             height: 500,
@@ -61,8 +68,11 @@
             loadonce: false,
         });
 
-        $("#AeroMedicallist").jqGrid('navGrid', '#pager', { edit: false, add: false, del: false, search: true }, {}, {}, {}, { multipleSearch: true});
-
+        $("#BeerList").jqGrid('navGrid', '#pager', { edit: false, add: false, del: false, search: true }, {}, {}, {}, { multipleSearch: true });
+        function FormatDetail(cellValue, options, rowObject) {
+            var detailHtml = "<a href=/Index/Details?id=" + rowObject.id + ">View</a>";
+            return detailHtml;
+        }
    
     }
 

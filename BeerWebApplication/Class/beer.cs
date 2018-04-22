@@ -93,4 +93,10 @@ namespace BeerWebApplication.Class
         public List<Datum> data { get; set; }
         public string status { get; set; }
     }
+    public class BeerDetail
+    {
+        public string message { get; set; }
+        public Datum data { get; set; }
+        public string status { get; set; }
+    }
 }

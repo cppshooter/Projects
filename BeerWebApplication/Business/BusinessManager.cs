@@ -59,13 +59,27 @@ namespace BeerWebApplication.Business
                 }
                 BeerList obj = new BeerList();
                 RestClient rc = new RestClient();
-                obj = rc.getResult(sbQuery.ToString());
+                obj = rc.getResultBeerList(sbQuery.ToString());
                 return obj;
             }
             catch(Exception ex)
             {
                 throw ex;
             }
-        } 
+        }
+        public BeerDetail FetchBeerDetail(string Id)
+        {
+            try
+            {
+                BeerDetail beerDetail = new BeerDetail();
+                RestClient rc = new RestClient();
+                beerDetail = rc.getResultBeerDetail(Id);
+                return beerDetail;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

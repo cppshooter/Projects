@@ -12,6 +12,13 @@ namespace BeerWebApplication.Controllers
         {
             return View("Index");
         }
+        // GET: Index
+        public ActionResult Details(string id)
+        {
+            BusinessManager bm = new BusinessManager();
+            BeerDetail beerDetail = bm.FetchBeerDetail(id);
+            return View(beerDetail);
+        }
         /// <summary>
         /// Fetch list of beers and format data according to JqGrid requirement
         /// </summary>
