@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Beer List";
+}
+
+<h2>Beer List</h2>
+
+<div class="table-responsive">
+    <table id="AeroMedicallist"></table>
+    <div id="pager"></div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        GetAeroMedicalList();
+    });
+
+    function GetAeroMedicalList() {
+
+        var obj = new Object();
+
+        $("#AeroMedicallist").jqGrid({
+            url: '@Url.Action("FetchData", "Index")',
+            datatype: "json",
+            postData: (obj),
+            colNames: ['name', 'description', 'abv', 'ibu', 'glasswareId', 'srmId', 'availableId', 'styleId', 'isOrganic', 'status', 'createDate', 'updateDate', 'random'],
+            colModel: [
+                { name: 'name', index: 'name', searchoptions: { sopt: ['eq'] } },
+                { name: 'description', index: 'description', searchoptions: { sopt: ['eq'] } },
+                { name: 'abv', index: 'abv', searchoptions: { sopt: ['eq'] } },
+
+                      { name: 'ibu', index: 'ibu', searchoptions: { sopt: ['eq'] } },
+                { name: 'glasswareId', index: 'glasswareId', searchoptions: { sopt: ['eq'] } },
+                { name: 'srmId', index: 'srmId', searchoptions: { sopt: ['eq'] } },
+
+                   { name: 'availableId', index: 'availableId', searchoptions: { sopt: ['eq'] } },
+                { name: 'styleId', index: 'styleId', searchoptions: { sopt: ['eq'] } },
+                {
+                    name: 'isOrganic', index: 'isOrganic', 
+                    searchoptions: { sopt: ['eq'] }
+                },
+
+                  { name: 'status', index: 'status', searchoptions: { sopt: ['eq'] } },
+                { name: 'createDate', index: 'createDate', searchoptions: { sopt: ['eq'] } },
+                { name: 'updateDate', index: 'updateDate', searchoptions: { sopt: ['eq'] } },
+                { name: 'random', index: 'random', searchoptions: { sopt: ['eq'] } },
+            ],      
+            autowidth: true,
+            height: 500,
+            shrinkToFit: true,
+            rowNum: 50,
+            rowList: [50],
+            pager: '#pager',
+            sortname: 'name',
+            sortorder: 'desc',
+            rownumbers: true,
+            viewrecords: true,
+            gridview: true,
+            loadonce: false,
+        });
+
+        $("#AeroMedicallist").jqGrid('navGrid', '#pager', { edit: false, add: false, del: false, search: true }, {}, {}, {}, { multipleSearch: true});
+
+   
+    }
+
+</script>
