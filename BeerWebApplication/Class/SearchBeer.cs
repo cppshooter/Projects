@@ -24,4 +24,11 @@ namespace BeerWebApplication.Class
         public string groupOp { get; set; }
         public List<Rule> rules { get; set; }
     }
+    public class JqGridFormat
+    {
+        public int records { get; set; }
+        public int total { get; set; }
+        public int page { get; set; }
+        public List<Datum> rows { get; set; }
+    }
 }

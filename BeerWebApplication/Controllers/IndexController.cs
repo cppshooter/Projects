@@ -10,7 +10,7 @@ namespace BeerWebApplication.Controllers
         // GET: Index
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
         /// <summary>
         /// Fetch list of beers and format data according to JqGrid requirement
